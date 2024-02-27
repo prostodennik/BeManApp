@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Section} from '../components/Section';
-import {ButtonPriceComponent} from '../components/ButtonPrice';
+import {ButtonComponent} from '../components/ButtonComponent';
 import Button from './Button';
 import Colors from '../components/Colors';
 
@@ -71,24 +71,10 @@ const Price = () => {
         title="Услуги и цены"
         button={<Button />}
         subTitle="Добро пожаловать в Be man barbershop!"
-        ButtonPrice={() => (
-          <ButtonPriceComponent>
-            {mockDataPrice.meta.dataTypes.map((item, id) => (
-              <Button
-                key={id}
-                textBtn={item.text}
-                styleBtn={item.id === menuId ? styles.activeBtn : styles.btn}
-                styleText={
-                  item.id === menuId ? styles.activeBtnText : styles.btnText
-                }
-                onPress={() => setMenuId(item.id)}
-              />
-            ))}
-          </ButtonPriceComponent>
-        )}>
+        ButtonPrice={<ButtonPrice menuId={menuId} setMenuId={setMenuId} />}>
         {dataPrice.map((item, id) => (
-          <Text key={id}>
-            {item.title} - {item.price}
+          <Text key={id} style={styles.textPrice}>
+            {item.title} {item.price}
           </Text>
         ))}
       </Section>
@@ -97,6 +83,20 @@ const Price = () => {
 };
 
 export default Price;
+
+export const ButtonPrice = ({menuId, setMenuId}: any) => (
+  <ButtonComponent>
+    {mockDataPrice.meta.dataTypes.map((item, id) => (
+      <Button
+        key={id}
+        textBtn={item.text}
+        styleBtn={item.id === menuId ? styles.activeBtn : styles.btn}
+        styleText={item.id === menuId ? styles.activeBtnText : styles.btnText}
+        onPress={() => setMenuId(item.id)}
+      />
+    ))}
+  </ButtonComponent>
+);
 
 const styles = StyleSheet.create({
   btn: {
@@ -130,5 +130,9 @@ const styles = StyleSheet.create({
   active: {
     backgroundColor: Colors.primary,
     color: Colors.white,
+  },
+  textPrice: {
+    flex: 1,
+    flexDirection: 'column-reverse',
   },
 });

@@ -21,26 +21,11 @@ const Btn = ({
   },
   styleText = {color: 'white', textTransform: 'uppercase', fontWeight: 'bold'},
 }: BtnProps) => {
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  // const openModal = () => {
-  //   setModalIsOpen(true);
-  //   console.log(modalIsOpen);
-  // };
-
-  // const closeModal = () => {
-  //   setModalIsOpen(false);
-  //   console.log(modalIsOpen);
-  // };
-
   return (
     <View style={styles.center}>
       <TouchableOpacity style={styleBtn} onPress={onPress}>
         <Text style={styleText}>{textBtn}</Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity style={styles.button} onPress={closeModal}>
-        <Text style={styles.text}>Close</Text>
-      </TouchableOpacity> */}
     </View>
   );
 };

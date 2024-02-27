@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-export const ButtonPriceComponent = ({children}: {children: any}) => {
+export const ButtonComponent = ({children}: {children: any}) => {
   console.log(children, 'children');
 
   return <View style={stylesPrice.container}>{children}</View>;

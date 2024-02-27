@@ -77,13 +77,16 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     flex: 1,
-    justifyContent: 'flex-start',
+    alignItems: 'center',
     borderRadius: 5,
   },
   image: {
     height: 170,
+    width: 150,
     resizeMode: 'contain',
     marginBottom: 5,
+    position: 'relative',
+    right: -5,
   },
   textImage: {
     alignItems: 'center',

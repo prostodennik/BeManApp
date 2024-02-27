@@ -9,7 +9,7 @@ type SectionProps = PropsWithChildren<{
   button: React.ReactNode;
   children: React.ReactNode;
   subTitle?: string;
-  ButtonPrice?: React.FC;
+  ButtonPrice?: React.ReactNode;
 }>;
 
 export function Section({
@@ -24,7 +24,7 @@ export function Section({
     <View style={styles.sectionContainer}>
       <Text style={styles.sectionTitle}>{title}</Text>
       {subTitle && <Text style={styles.sectionDescription}>{subTitle}</Text>}
-      <View>{ButtonPrice && <ButtonPrice />}</View>
+      <View>{ButtonPrice}</View>
       <Text
         style={[
           styles.sectionDescription,
