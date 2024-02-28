@@ -74,7 +74,7 @@ const Price = () => {
         ButtonPrice={<ButtonPrice menuId={menuId} setMenuId={setMenuId} />}>
         {dataPrice.map((item, id) => (
           <Text key={id} style={styles.textPrice}>
-            {item.title} {item.price}
+            {item.title} - {item.price}
           </Text>
         ))}
       </Section>
@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   textPrice: {
-    flex: 1,
-    flexDirection: 'column-reverse',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.primary,
   },
 });
