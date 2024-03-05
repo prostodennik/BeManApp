@@ -24,17 +24,17 @@ export function Section({
     <View style={styles.sectionContainer}>
       <Text style={styles.sectionTitle}>{title}</Text>
       {subTitle && <Text style={styles.sectionDescription}>{subTitle}</Text>}
-      <View>{ButtonPrice}</View>
-      <Text
+      <View>{ButtonPrice && ButtonPrice}</View>
+      {/* <Text
         style={[
           styles.sectionDescription,
           {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
         ]}>
-        {children}
-      </Text>
-      {button}
+      </Text> */}
+      {children}
+      {button && button}
     </View>
   );
 }
@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     flexDirection: 'column',
+    width: '100%',
+    flex: 1,
   },
   highlight: {
     fontWeight: '700',

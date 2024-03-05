@@ -37,7 +37,7 @@ const mockDataPrice: PriceProps = {
     {title: 'черная маска', price: '1000 Р', id: 1},
     {title: 'друг + друг', price: '2400 Р', id: 2},
     {
-      title: 'папа + сын (стрижка мужская и детская от 3 до 10 лет)',
+      title: 'папа + сын \n(стрижка мужская и детская от 3 до 10 лет)',
       price: '2000 Р',
       id: 2,
     },
@@ -63,8 +63,6 @@ const Price = () => {
     setDataPrice(mockDataPrice.data.filter(item => item.id === menuId));
   }, [menuId]);
 
-  console.log(dataPrice);
-
   return (
     <View>
       <Section
@@ -76,10 +74,9 @@ const Price = () => {
           data={dataPrice}
           keyExtractor={item => item.title}
           renderItem={({item}) => (
-            <View>
-              <Text style={styles.textPrice}>
-                {item.title} - {item.price}
-              </Text>
+            <View style={styles.textPrice}>
+              <Text>{item.title}</Text>
+              <Text>{item.price}</Text>
             </View>
           )}
         />
@@ -117,8 +114,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 5,
     marginTop: 5,
-
-    minWidth: 100,
     borderWidth: 1,
     borderColor: Colors.primary,
     backgroundColor: Colors.primary,
@@ -139,8 +134,13 @@ const styles = StyleSheet.create({
   },
   textPrice: {
     flex: 1,
-    padding: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: Colors.primary,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    alignItems: 'center',
   },
 });

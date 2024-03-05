@@ -18,7 +18,7 @@ const Header = () => {
       ]}>
       <Text style={styles.title}>BE MAN</Text>
       <Text style={styles.text}>
-        Место, где каждый {'\n'}будет чувствовать {'\n'} себя джентльменом
+        Место, где каждый{'\n'}будет чувствовать{'\n'}себя джентльменом
       </Text>
       <Button />
     </ImageBackground>
