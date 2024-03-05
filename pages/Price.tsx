@@ -29,14 +29,12 @@ const mockDataPrice: PriceProps = {
     {title: 'опасное бритье (лицо или голова)', price: '1000 Р', id: 0},
     {title: 'Химическая завивка для мужчин', price: 'ОТ 4000 Р', id: 0},
     {title: 'Окрашивание для мужчин', price: 'ОТ 2500 Р', id: 0},
-
     {title: 'камуфляж бороды (полный)', price: '700 Р', id: 1},
     {title: 'камуфляж головы', price: '1000 Р', id: 1},
     {title: 'мытье и укладка', price: '400 Р', id: 1},
     {title: 'окантовка с подбриванием', price: '300 Р', id: 1},
     {title: 'депиляция воском', price: '400 / 1000 Р', id: 1},
     {title: 'черная маска', price: '1000 Р', id: 1},
-
     {title: 'друг + друг', price: '2400 Р', id: 2},
     {
       title: 'папа + сын (стрижка мужская и детская от 3 до 10 лет)',
@@ -65,6 +63,8 @@ const Price = () => {
     setDataPrice(mockDataPrice.data.filter(item => item.id === menuId));
   }, [menuId]);
 
+  console.log(dataPrice);
+
   return (
     <View>
       <Section
@@ -72,10 +72,12 @@ const Price = () => {
         button={<Button />}
         subTitle="Добро пожаловать в Be man barbershop!"
         ButtonPrice={<ButtonPrice menuId={menuId} setMenuId={setMenuId} />}>
-        {dataPrice.map((item, id) => (
-          <Text key={id} style={styles.textPrice}>
-            {item.title} - {item.price}
-          </Text>
+        {dataPrice.map(item => (
+          <View key={item.title}>
+            <Text style={styles.textPrice}>
+              {item.title} - {item.price}
+            </Text>
+          </View>
         ))}
       </Section>
     </View>
@@ -132,6 +134,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   textPrice: {
+    flex: 1,
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: Colors.primary,
