@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {Section} from '../components/Section';
 import {ButtonComponent} from '../components/ButtonComponent';
 import Button from './Button';
@@ -72,13 +72,17 @@ const Price = () => {
         button={<Button />}
         subTitle="Добро пожаловать в Be man barbershop!"
         ButtonPrice={<ButtonPrice menuId={menuId} setMenuId={setMenuId} />}>
-        {dataPrice.map(item => (
-          <View key={item.title}>
-            <Text style={styles.textPrice}>
-              {item.title} - {item.price}
-            </Text>
-          </View>
-        ))}
+        <FlatList
+          data={dataPrice}
+          keyExtractor={item => item.title}
+          renderItem={({item}) => (
+            <View>
+              <Text style={styles.textPrice}>
+                {item.title} - {item.price}
+              </Text>
+            </View>
+          )}
+        />
       </Section>
     </View>
   );
