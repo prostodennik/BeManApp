@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {Section} from '../components/Section';
 import {ButtonComponent} from '../components/ButtonComponent';
 import Button from './Button';
@@ -37,7 +37,7 @@ const mockDataPrice: PriceProps = {
     {title: 'черная маска', price: '1000 Р', id: 1},
     {title: 'друг + друг', price: '2400 Р', id: 2},
     {
-      title: 'папа + сын \n(стрижка мужская и детская от 3 до 10 лет)',
+      title: 'папа + сын \n(стрижка мужская и \nдетская от 3 до 10 лет)',
       price: '2000 Р',
       id: 2,
     },
@@ -63,6 +63,8 @@ const Price = () => {
     setDataPrice(mockDataPrice.data.filter(item => item.id === menuId));
   }, [menuId]);
 
+  console.log(dataPrice);
+
   return (
     <View>
       <Section
@@ -70,16 +72,12 @@ const Price = () => {
         button={<Button />}
         subTitle="Добро пожаловать в Be man barbershop!"
         ButtonPrice={<ButtonPrice menuId={menuId} setMenuId={setMenuId} />}>
-        <FlatList
-          data={dataPrice}
-          keyExtractor={item => item.title}
-          renderItem={({item}) => (
-            <View style={styles.textPrice}>
-              <Text>{item.title}</Text>
-              <Text>{item.price}</Text>
-            </View>
-          )}
-        />
+        {dataPrice.map(item => (
+          <View style={styles.textPriceWrap} key={item.title}>
+            <Text style={styles.textPrice}>{item.title}</Text>
+            <Text style={styles.textPrice}>{item.price}</Text>
+          </View>
+        ))}
       </Section>
     </View>
   );
@@ -133,14 +131,17 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   textPrice: {
-    flex: 1,
+    textTransform: 'uppercase',
+  },
+  textPriceWrap: {
     paddingTop: 10,
     paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: Colors.primary,
+    textAlign: 'justify',
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
     alignItems: 'center',
   },
 });
