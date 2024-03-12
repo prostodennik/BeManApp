@@ -63,8 +63,6 @@ const Price = () => {
     setDataPrice(mockDataPrice.data.filter(item => item.id === menuId));
   }, [menuId]);
 
-  console.log(dataPrice);
-
   return (
     <View>
       <Section

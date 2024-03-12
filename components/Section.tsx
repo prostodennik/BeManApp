@@ -10,6 +10,7 @@ type SectionProps = PropsWithChildren<{
   children?: React.ReactNode;
   subTitle?: string;
   ButtonPrice?: React.ReactNode;
+  image?: string;
 }>;
 
 export function Section({
@@ -18,9 +19,9 @@ export function Section({
   button,
   subTitle,
   ButtonPrice,
+  image,
 }: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-  console.log(children);
 
   return (
     <View style={styles.sectionContainer}>
@@ -43,6 +44,7 @@ export function Section({
           <View style={styles.textPadding}>{children}</View>
         ))}
       {button && button}
+      {image && image}
     </View>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import {TouchableOpacity, Text, View, StyleSheet, Modal} from 'react-native';
 import Colors from '../components/Colors';
-// import {WebView} from 'react-native-webview';
+import {WebView} from 'react-native-webview';
 
 type BtnProps = {
   textBtn?: string;
@@ -45,10 +45,11 @@ const Btn = ({
           onRequestClose={closeModal}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              {/* <WebView
+              <WebView
                 source={{uri: 'https://n1005319.yclients.com/'}}
                 style={styles.webview}
-              /> */}
+                isWebView={modalVisible}
+              />
               <TouchableOpacity style={styleBtn} onPress={closeModal}>
                 <Text style={styleText}>Закрыть</Text>
               </TouchableOpacity>
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
+    width: '90%',
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
