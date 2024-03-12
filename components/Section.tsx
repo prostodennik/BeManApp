@@ -27,7 +27,6 @@ export function Section({
     <View style={styles.sectionContainer}>
       <Text
         style={[
-          // styles.sectionDescription,
           styles.sectionTitle,
           {
             color: isDarkMode ? Colors.light : Colors.dark,
