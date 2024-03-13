@@ -20,7 +20,7 @@ const Header = () => {
       <Text style={styles.text}>
         Место, где каждый{'\n'}будет чувствовать{'\n'}себя джентльменом
       </Text>
-      <Button />
+      <Button showModal />
     </ImageBackground>
   );
 };

@@ -9,11 +9,14 @@ type BtnProps = {
   styleBtn?: any;
   styleText?: any;
   onPress?: () => void;
+  showModal?: boolean;
+  style?: object;
 };
 
 const Btn = ({
   textBtn = 'Записаться',
   onPress,
+  showModal,
   styleBtn = {
     alignItems: 'center',
     backgroundColor: Colors.primary,
@@ -37,26 +40,32 @@ const Btn = ({
       <TouchableOpacity style={styleBtn} onPress={onPress || openModal}>
         <Text style={styleText}>{textBtn}</Text>
       </TouchableOpacity>
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={closeModal}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <WebView
-                source={{uri: 'https://n1005319.yclients.com/'}}
-                style={styles.webview}
-                isWebView={modalVisible}
-              />
+      {showModal && (
+        <View style={styles.centeredView}>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={modalVisible}
+            onRequestClose={closeModal}>
+            <WebView
+              style={{flex: 0, height: '100%'}}
+              source={{uri: 'https://n1005319.yclients.com/'}}
+            />
+            <View
+              style={{
+                alignItems: 'center',
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: 70,
+              }}>
               <TouchableOpacity style={styleBtn} onPress={closeModal}>
                 <Text style={styleText}>Закрыть</Text>
               </TouchableOpacity>
             </View>
-          </View>
-        </Modal>
-      </View>
+          </Modal>
+        </View>
+      )}
     </View>
   );
 };
@@ -82,26 +91,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    width: '90%',
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  webview: {
-    width: '85%',
-    height: '100%',
   },
 });
 

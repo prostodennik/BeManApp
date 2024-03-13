@@ -67,7 +67,7 @@ const Price = () => {
     <View>
       <Section
         title="Услуги и цены"
-        button={<Button />}
+        button={<Button showModal />}
         subTitle="Добро пожаловать в Be man barbershop!"
         ButtonPrice={<ButtonPrice menuId={menuId} setMenuId={setMenuId} />}>
         {dataPrice.map(item => (
@@ -83,19 +83,21 @@ const Price = () => {
 
 export default Price;
 
-export const ButtonPrice = ({menuId, setMenuId}: any) => (
-  <ButtonComponent>
-    {mockDataPrice.meta.dataTypes.map((item, id) => (
-      <Button
-        key={id}
-        textBtn={item.text}
-        styleBtn={item.id === menuId ? styles.activeBtn : styles.btn}
-        styleText={item.id === menuId ? styles.activeBtnText : styles.btnText}
-        onPress={() => setMenuId(item.id)}
-      />
-    ))}
-  </ButtonComponent>
-);
+export const ButtonPrice = ({menuId, setMenuId}: any) => {
+  return (
+    <ButtonComponent>
+      {mockDataPrice.meta.dataTypes.map((item, id) => (
+        <Button
+          key={id}
+          textBtn={item.text}
+          styleBtn={item.id === menuId ? styles.activeBtn : styles.btn}
+          styleText={item.id === menuId ? styles.activeBtnText : styles.btnText}
+          onPress={() => setMenuId(item.id)}
+        />
+      ))}
+    </ButtonComponent>
+  );
+};
 
 const styles = StyleSheet.create({
   btn: {
